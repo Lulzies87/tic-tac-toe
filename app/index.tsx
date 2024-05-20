@@ -34,6 +34,11 @@ export default function Index() {
 	);
 }
 
+type squarePosition = {
+	x: number;
+	y: number;
+};
+
 function Board() {
 	/*
     0 - stop game
@@ -50,35 +55,82 @@ function Board() {
 
 	function updateBoard() {}
 
-	const onMove = () => {
-		console.log("test");
+	const onMove = (position: squarePosition) => {
+		console.log(position);
+		// calculateMove();
 	};
 
 	return (
 		<View style={styles.board}>
-			<Square key={0} value={gameBoard[0][0]} onMove={onMove} />
-			<Square key={1} value={gameBoard[0][1]} onMove={onMove} />
-			<Square key={2} value={gameBoard[0][2]} onMove={onMove} />
-			<Square key={3} value={gameBoard[1][0]} onMove={onMove} />
-			<Square key={4} value={gameBoard[1][1]} onMove={onMove} />
-			<Square key={5} value={gameBoard[1][2]} onMove={onMove} />
-			<Square key={6} value={gameBoard[2][0]} onMove={onMove} />
-			<Square key={7} value={gameBoard[2][1]} onMove={onMove} />
-			<Square key={8} value={gameBoard[2][2]} onMove={onMove} />
+			<Square
+				key={0}
+				position={[0, 0]}
+				value={gameBoard[0][0]}
+				onMove={onMove}
+			/>
+			<Square
+				key={1}
+				position={[0, 1]}
+				value={gameBoard[0][1]}
+				onMove={onMove}
+			/>
+			<Square
+				key={2}
+				position={[0, 2]}
+				value={gameBoard[0][2]}
+				onMove={onMove}
+			/>
+			<Square
+				key={3}
+				position={[1, 0]}
+				value={gameBoard[1][0]}
+				onMove={onMove}
+			/>
+			<Square
+				key={4}
+				position={[1, 1]}
+				value={gameBoard[1][1]}
+				onMove={onMove}
+			/>
+			<Square
+				key={5}
+				position={[1, 2]}
+				value={gameBoard[1][2]}
+				onMove={onMove}
+			/>
+			<Square
+				key={6}
+				position={[2, 0]}
+				value={gameBoard[2][0]}
+				onMove={onMove}
+			/>
+			<Square
+				key={7}
+				position={[2, 1]}
+				value={gameBoard[2][1]}
+				onMove={onMove}
+			/>
+			<Square
+				key={8}
+				position={[2, 2]}
+				value={gameBoard[2][2]}
+				onMove={onMove}
+			/>
 		</View>
 	);
 }
 
 interface SquareProps {
 	value: number;
+	position: squarePosition;
 	onMove: Function;
 }
-function Square({ value, onMove }: SquareProps) {
+function Square({ value, position, onMove }: SquareProps) {
 	return (
 		<TouchableOpacity
 			style={styles.square}
 			onPress={() => {
-				onMove();
+				onMove(position);
 			}}
 		>
 			<Text>{value.toString()}</Text>
