@@ -1,5 +1,11 @@
 import { useState } from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import {
+	Pressable,
+	StyleSheet,
+	Text,
+	TouchableOpacity,
+	View,
+} from "react-native";
 
 /*
 
@@ -69,7 +75,12 @@ interface SquareProps {
 }
 function Square({ value, onMove }: SquareProps) {
 	return (
-		<TouchableOpacity style={styles.square} onPress={onMove()}>
+		<TouchableOpacity
+			style={styles.square}
+			onPress={() => {
+				onMove();
+			}}
+		>
 			<Text>{value.toString()}</Text>
 		</TouchableOpacity>
 	);
